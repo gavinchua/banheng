@@ -1,24 +1,41 @@
-{
-  "restaurants": [
-    {
-      "id": 1,
-      "name": "HabourFront Center",
-      "pagename": "habourfront",
-      "slug": "pavillion",
-      "address": {
-        "address1": "1 Maritime Square",
-        "address2": "#04-01 HarbourFront Centre",
-        "postalcode": "099253"
-      },
-      "latlng": {
-        "lat": 1.264553,
-        "lng": 103.819304
-      },
-      "zoom": 16,
-      "operating_hours": {
-        "Lunch": "11:30am - 2:30pm"
-        "Dinner": "6:00pm – 10:00pm"
-      }
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "HarbourFront Center",
+    "pagename": "harbourfront",
+    "email": "pavillion@banheng.com.sg",
+    "address": "1 Maritime Square\n#04-01 HarbourFront Centre",
+    "postalcode": "099253",
+    "businesshours": "Lunch - 11:30am - 2:30pm\nDinner - 6:00pm – 10:00pm",
+    "contact":
+      "9297 0134 / 9720 8018\nPlease contact Sales Team:\nJessie, Candy, Sammi ( Ms ).\nTel: 6278 0288 /6278 1354 /6278 1361\nFax: 6278 6080",
+    "directions":
+      "Alight from HarbourFront MRT Station (NE1), take Exit B. Follow the Cruise Centre sign; take lift at Lobby C (next to Cruise Departure/ Arrival Hall) to Level 4.",
+    "latlng": {
+      "lat": 1.264553,
+      "lng": 103.819304
+    },
+    "zoom": 16,
+    "myslides": [
+      { "src": "https://gavinchua.com/banheng/img/habourfront-center-02.jpg" },
+      { "src": "https://gavinchua.com/banheng/img/habourfront-center-03.jpg" },
+      { "src": "https://gavinchua.com/banheng/img/habourfront-center-04.jpg" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "The Cathay",
+    "pagename": "thecathay",
+    "email": "thecathay@banheng.com.sg",
+    "address": "1 Maritime Square\n#04-01 HarbourFront Centre",
+    "postalcode": "099253",
+    "businesshours": "Lunch - 11:30am - 2:30pm\nDinner - 6:00pm – 10:00pm",
+    "contact": "",
+    "directions": "",
+    "latlng": {
+      "lat": 1.264553,
+      "lng": 103.819304
+    },
+    "zoom": 16
+  }
+]

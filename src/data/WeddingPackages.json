@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Cupid",
+    "desc":
+      "$588 Nett per table (Mon to Thu, excluding Eve of Public Holidays)\n$658 Nett per table (Fri to Sun, Eve of & Public Holidays)",
+    "file": "wedding-menu-cupid.pdf"
+  },
+  {
+    "id": 2,
+    "name": "Venus",
+    "desc":
+      "$638 Nett per table (Mon to Thu, excluding Eve of Public Holidays)\n$718 Nett per table (Fri to Sun, Eve of & Public Holidays)",
+    "file": "wedding-menu-venus.pdf"
+  },
+  {
+    "id": 3,
+    "name": "Eternity",
+    "desc":
+      "$688 Nett per table (Mon to Thu, excluding Eve of Public Holidays)\n$758 Nett per table (Fri to Sun, Eve of & Public Holidays)",
+    "file": "wedding-menu-eternity.pdf"
+  },
+  {
+    "id": 4,
+    "name": "Grandeur",
+    "desc":
+      "$838 Nett per table (Mon to Thu, excluding Eve of Public Holidays)\n$898 Nett per table (Fri to Sun, Eve of & Public Holidays)",
+    "file": "wedding-menu-grandeur.pdf"
+  },
+  {
+    "id": 5,
+    "name": "Endless Love",
+    "desc": "$988 Nett per table (Mon to Thu, excluding Eve of Public Holidays)\n$1188 Nett per table (Fri to Sun, Eve of & Public Holidays)",
+    "file": "wedding-menu-endlesslove.pdf"
+  },
+  {
+    "id": 6,
+    "name": "Vegetarian",
+    "desc": "$688 Nett per table",
+    "file": "wedding-menu-vegetarian.pdf"
+  }
+]

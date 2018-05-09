@@ -58,10 +58,10 @@ export default class Header extends Component {
                 <DropdownMenu right>
                   <DropdownItem
                     tag={RRNavLink}
-                    to="/HabourFront"
+                    to="/HarbourFront"
                     onClick={this.toggle}
                   >
-                    @HabourFront
+                    @HarbourFront
                   </DropdownItem>
                   <DropdownItem
                     tag={RRNavLink}

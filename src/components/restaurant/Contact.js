@@ -25,7 +25,7 @@ export default class RestaurantContact extends Component {
             <br />
             {this.props.contact}
             <br />
-            <a href={this.props.mailto}>{this.props.slug}@banheng.com.sg</a>
+            <a href={this.props.mailto}>{this.props.email}</a>
           </p>
           <h4 className="margin-top-10">Directions</h4>
           <p className="prewrap">{this.props.directions}</p>

@@ -60,9 +60,7 @@ export default class RestaurantForm extends Component {
             //console.log(formData.get("recaptcha"));
           }}
           validationSchema={yup.object().shape({
-            name: yup
-              .string()
-              .required("Name is required!"),
+            name: yup.string().required("Name is required!"),
             email: yup
               .string()
               .email("Email is not valid!")
@@ -95,12 +93,17 @@ export default class RestaurantForm extends Component {
                   id="name"
                   name="name"
                   type="text"
-                  className="form-control"
+                  className={`form-control ${errors.name &&
+                    touched.name &&
+                    "is-invalid"}`}
                   value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.name && touched.name && <p>{errors.name}</p>}
+                {errors.name &&
+                  touched.name && (
+                    <div className="invalid-feedback">{errors.name}</div>
+                  )}
               </div>
 
               <div className="form-group">
@@ -109,12 +112,17 @@ export default class RestaurantForm extends Component {
                   id="email"
                   name="email"
                   type="email"
-                  className="form-control"
+                  className={`form-control ${errors.email &&
+                    touched.email &&
+                    "is-invalid"}`}
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.email && touched.email && <p>{errors.email}</p>}
+                {errors.email &&
+                  touched.email && (
+                    <div className="invalid-feedback">{errors.email}</div>
+                  )}
               </div>
 
               <div className="form-group">
@@ -123,12 +131,17 @@ export default class RestaurantForm extends Component {
                   id="phone"
                   name="phone"
                   type="tel"
-                  className="form-control"
+                  className={`form-control ${errors.phone &&
+                    touched.phone &&
+                    "is-invalid"}`}
                   value={values.phone}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.phone && touched.phone && <p>{errors.phone}</p>}
+                {errors.phone &&
+                  touched.phone && (
+                    <div className="invalid-feedback">{errors.phone}</div>
+                  )}
               </div>
 
               <button type="submit" className="btn btn-primary">

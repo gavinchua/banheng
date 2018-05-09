@@ -10,7 +10,7 @@ export default class Home extends Component {
         <nav>
           <ul>
             <li>
-              <Link to="/HabourFront">Habour Front</Link>
+              <Link to="/HarbourFront">Harbour Front</Link>
             </li>
             <li>
               <Link to="/TheCathay">The Cathay</Link>

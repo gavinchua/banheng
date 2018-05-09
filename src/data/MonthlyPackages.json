@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "Set Menus",
+    "desc": "$398++",
+    "file": "birthday-menu-a.pdf"
+  },
+  {
+    "id": 2,
+    "name": "Crispy Fish Skin with Salted Egg Yolk Menu",
+    "desc": "$498++",
+    "file": "birthday-menu-b.pdf"
+  },
+  {
+    "id": 3,
+    "name": "50% Discount Ala Carte Menu",
+    "file": "birthday-menu-d.pdf"
+  }
+]

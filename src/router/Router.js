@@ -7,7 +7,7 @@ import Footer from "../components/shared/Footer";
 
 // Pages
 import Home from "../pages/Home";
-import HabourFront from "../pages/HabourFront";
+import HarbourFront from "../pages/HarbourFront";
 import TheCathay from "../pages/TheCathay";
 import ArandaCountryClub from "../pages/ArandaCountryClub";
 import OrchardCentral from "../pages/OrchardCentral";
@@ -20,7 +20,7 @@ export default class ReactRouter extends React.Component {
       <React.Fragment>
         <Header />
         <Route exact path="/" component={Home} />
-        <Route path="/HabourFront" component={HabourFront} />
+        <Route path="/HarbourFront" component={HarbourFront} />
         <Route path="/TheCathay" component={TheCathay} />
         <Route path="/ArandaCountryClub" component={ArandaCountryClub} />
         <Route path="/OrchardCentral" component={OrchardCentral} />
