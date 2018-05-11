@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "Red Garoupa & Shark's Fin Set",
+    "desc": "$19.80+ per pax",
+    "file": "promotion-menu-a.pdf"
+  },
+  {
+    "id": 2,
+    "name": "Red Garoupa & Abalone Set",
+    "desc": "$26.80+ per pax",
+    "file": "promotion-menu-b.pdf"
+  },
+  {
+    "id": 3,
+    "name": "Set Menu",
+    "file": "promotion-individual-set-menus.pdf"
+  }
+]

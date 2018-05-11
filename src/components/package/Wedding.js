@@ -10,7 +10,7 @@ export default class PackageWedding extends Component {
       (weddingpackages, index) => (
         <li key={weddingpackages.id}>
           <p className="bullet-menu-selection bold">{weddingpackages.name}</p>
-          <a href={weddingpackages.file} className="prewrap bg-none">
+          <a href={`wedding-menu-${(weddingpackages.name).replace(/\s+/g, '').toLowerCase()}.pdf`} className="prewrap bg-none">
             {weddingpackages.desc}
           </a>
         </li>
