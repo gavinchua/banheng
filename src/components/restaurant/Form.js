@@ -25,12 +25,14 @@ export default class RestaurantForm extends Component {
           initialValues={{
             weddingCoupleName: "",
             weddingContactPerson: "",
-            mobile: "",
-            email: "",
-            reservation: "",
+            weddingEmail: "",
+            weddingMobileNumber: "",
+            weddingHomeNumber: "",
+            weddingAddress: "",
+            weddingPurpose: "",
             table: "",
             guest: "",
-            message: "",
+            weddingMessage: "",
             recaptcha: ""
           }}
           onSubmit={async values => {
@@ -41,12 +43,14 @@ export default class RestaurantForm extends Component {
               "weddingContactPerson",
               values.weddingContactPerson
             );
-            formData.append("mobile", values.mobile);
-            formData.append("email", values.email);
-            formData.append("email", values.reservation);
+            formData.append("weddingEmail", values.weddingEmail);
+            formData.append("weddingMobileNumber", values.weddingMobileNumber);
+            formData.append("weddingHomeNumber", values.weddingHomeNumber);
+            formData.append("weddingAddress", values.weddingAddress);
+            formData.append("weddingPurpose", values.weddingPurpose);
             formData.append("table", values.table);
             formData.append("guest", values.guest);
-            formData.append("message", values.message);
+            formData.append("weddingMessage", values.weddingMessage);
             formData.append("recaptcha", values.recaptcha);
 
             // you would submit with fetch for example
@@ -63,15 +67,19 @@ export default class RestaurantForm extends Component {
             weddingContactPerson: yup
               .string()
               .required("Please check Contact person."),
-            mobile: yup
-              .string()
-              .min(8, "Mobile must have min. of 8 digits")
-              .required("Please check Mobile."),
-            email: yup
+            weddingEmail: yup
               .string()
               .email("Email is not valid!")
               .required("Please check Email."),
-            reservation: yup.string().required("Please check Reservation for."),
+            weddingMobileNumber: yup
+              .string()
+              .min(8, "Mobile No. must have min. of 8 digits")
+              .required("Please check Mobile No.."),
+            weddingHomeNumber: yup
+              .string()
+              .min(8, "Home No. must have min. of 8 digits"),
+            weddingAddress: yup.string(),
+            weddingPurpose: yup.string().required("Please check Purpose."),
             table: yup
               .number()
               .typeError("No. of table/s must be a number")
@@ -82,7 +90,7 @@ export default class RestaurantForm extends Component {
               .typeError("No. of guest/s must be a number")
               .moreThan(0, "No. of guest/s must be greater than zero")
               .required("Please check No. of Guest/s required."),
-            message: yup.string().required("Please check Message."),
+            weddingMessage: yup.string(),
             recaptcha: yup.string().required("Please check Captcha.")
           })}
           render={({
@@ -117,11 +125,14 @@ export default class RestaurantForm extends Component {
                 确认您的预订是否成功。
               </p>
               <p>
-                <small>All fields are maditory</small>
+                <small>* Mandatory fields</small>
               </p>
 
               <div className="form-group">
-                <label htmlFor="name">Name Of Couple</label>
+                <label htmlFor="weddingCoupleName">
+                  Name Of Couple
+                  <small className="required">*</small>
+                </label>
                 <input
                   id="weddingCoupleName"
                   name="weddingCoupleName"
@@ -143,7 +154,10 @@ export default class RestaurantForm extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="name">Contact person</label>
+                <label htmlFor="weddingContactPerson">
+                  Contact person
+                  <small className="required">*</small>
+                </label>
                 <input
                   id="weddingContactPerson"
                   name="weddingContactPerson"
@@ -165,85 +179,135 @@ export default class RestaurantForm extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="mobile">Mobile</label>
+                <label htmlFor="weddingEmail">
+                  E-mail
+                  <small className="required">*</small>
+                </label>
                 <input
-                  id="mobile"
-                  name="mobile"
-                  type="tel"
-                  className={`form-control ${errors.mobile &&
-                    touched.mobile &&
-                    "is-invalid"}`}
-                  placeholder="Mobile"
-                  value={values.mobile}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.mobile &&
-                  touched.mobile && (
-                    <p className="invalid-feedback">{errors.mobile}</p>
-                  )}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">E-mail</label>
-                <input
-                  id="email"
-                  name="email"
+                  id="weddingEmail"
+                  name="weddingEmail"
                   type="email"
-                  className={`form-control ${errors.email &&
-                    touched.email &&
+                  className={`form-control ${errors.weddingEmail &&
+                    touched.weddingEmail &&
                     "is-invalid"}`}
                   placeholder="Email"
-                  value={values.email}
+                  value={values.weddingEmail}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.email &&
-                  touched.email && (
-                    <p className="invalid-feedback">{errors.email}</p>
+                {errors.weddingEmail &&
+                  touched.weddingEmail && (
+                    <p className="invalid-feedback">{errors.weddingEmail}</p>
                   )}
               </div>
 
               <div className="form-group">
-                <div className="form-check form-check-inline">
-                  <input
-                    id="reservation"
-                    name="reservation"
-                    type="radio"
-                    className={`form-control form-check-input ${errors.reservation &&
-                      touched.reservation &&
-                      "is-invalid"}`}
-                    value={values.reservation}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  <label className="form-check-label" htmlFor="reservation">
-                    Option 1
-                  </label>
-                  {errors.reservation &&
-                    touched.reservation && (
-                      <p className="invalid-feedback">{errors.reservation}</p>
-                    )}
-                </div>
-                <div className="form-check form-check-inline">
-                  <input
-                    id="reservation"
-                    name="reservation"
-                    type="radio"
-                    className={`form-control form-check-input ${errors.reservation &&
-                      touched.reservation &&
-                      "is-invalid"}`}
-                    value={values.reservation}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  <label className="form-check-label" htmlFor="reservation">
-                    Option 2
-                  </label>
-                  {errors.reservation &&
-                    touched.reservation && (
-                      <p className="invalid-feedback">{errors.reservation}</p>
-                    )}
+                <label htmlFor="weddingMobileNumber">
+                  Mobile No.
+                  <small className="required">*</small>
+                </label>
+                <input
+                  id="weddingMobileNumber"
+                  name="weddingMobileNumber"
+                  type="tel"
+                  className={`form-control ${errors.weddingMobileNumber &&
+                    touched.weddingMobileNumber &&
+                    "is-invalid"}`}
+                  placeholder="Mobile No."
+                  value={values.weddingMobileNumber}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.weddingMobileNumber &&
+                  touched.weddingMobileNumber && (
+                    <p className="invalid-feedback">
+                      {errors.weddingMobileNumber}
+                    </p>
+                  )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="weddingHomeNumber">Home No.</label>
+                <input
+                  id="weddingHomeNumber"
+                  name="weddingHomeNumber"
+                  type="tel"
+                  className={`form-control ${errors.weddingHomeNumber &&
+                    touched.v &&
+                    "is-invalid"}`}
+                  placeholder="Home No."
+                  value={values.weddingHomeNumber}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.weddingHomeNumber &&
+                  touched.weddingHomeNumber && (
+                    <p className="invalid-feedback">
+                      {errors.weddingHomeNumber}
+                    </p>
+                  )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="weddingAddress">Address</label>
+                <textarea
+                  id="weddingAddress"
+                  name="weddingAddress"
+                  className={`form-control ${errors.weddingAddress &&
+                    touched.weddingAddress &&
+                    "is-invalid"}`}
+                  placeholder="Address"
+                  value={values.weddingAddress}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.weddingAddress &&
+                  touched.weddingAddress && (
+                    <p className="invalid-feedback">{errors.weddingAddress}</p>
+                  )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="weddingPurpose">
+                  Purpose
+                  <small className="required">*</small>
+                </label>
+                {errors.weddingPurpose &&
+                  touched.weddingPurpose && (
+                    <p className="invalid-feedback">{errors.weddingPurpose}</p>
+                  )}
+                <div className="form-check">
+                  <div className="form-check form-check-inline">
+                    <input
+                      id="weddingPurposeWedding"
+                      name="weddingPurpose"
+                      type="radio"
+                      className="form-check-input"
+                      value="Wedding"
+                      checked
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="weddingPurposeWedding"
+                    >
+                      Wedding
+                    </label>
+                  </div>
+                  <div className="form-check form-check-inline">
+                    <input
+                      id="weddingPurposeFunction"
+                      name="weddingPurpose"
+                      type="radio"
+                      className="form-check-input"
+                      value="Function"
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="weddingPurposeFunction"
+                    >
+                      Function
+                    </label>
+                  </div>
                 </div>
               </div>
 
@@ -288,21 +352,21 @@ export default class RestaurantForm extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message</label>
+                <label htmlFor="weddingMessage">Message</label>
                 <textarea
-                  id="message"
-                  name="message"
-                  className={`form-control ${errors.message &&
-                    touched.message &&
+                  id="weddingMessage"
+                  name="weddingMessage"
+                  className={`form-control ${errors.weddingMessage &&
+                    touched.weddingMessage &&
                     "is-invalid"}`}
                   placeholder="Message"
-                  value={values.message}
+                  value={values.weddingMessage}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.message &&
-                  touched.message && (
-                    <p className="invalid-feedback">{errors.message}</p>
+                {errors.weddingMessage &&
+                  touched.weddingMessage && (
+                    <p className="invalid-feedback">{errors.weddingMessage}</p>
                   )}
               </div>
 
