@@ -1,44 +1,65 @@
 import React, { Component } from "react";
-import RestaurantContact from "../components/restaurant/Contact";
-import RestaurantCarousel from "../components/restaurant/Carousel";
 
+// Data
+import WeddingPackageData from "../data/WeddingPackages.json";
+import MonthlyPackageData from "../data/MonthlyPackages.json";
+import BirthdayPackageData from "../data/BirthdayPackages.json";
+import IndividualPackageData from "../data/IndividualPackages.json";
+import RestaurantsArrayData from "../data/RestaurantsArray.json";
+
+// Components
+import RestaurantCarousel from "../components/restaurant/Carousel";
+import PackageWedding from "../components/package/Wedding";
+import PackageMonthly from "../components/package/Monthly";
+import PackageBirthday from "../components/package/Birthday";
+import PackageIndividual from "../components/package/Individual";
+import RestaurantContact from "../components/restaurant/Contact";
+
+// Global
 const pagename = "orchardcentral";
-const myslides = [
-  { src: "https://placeimg.com/1000/300/any", altText: "" },
-  { src: "https://placeimg.com/1000/300/any", altText: "" },
-  { src: "https://placeimg.com/1000/300/any", altText: "" }
-];
-const lat = 1.300934;
-const lng = 103.840008;
-const zoom = 16;
-const restaurant = "Orchard Central";
-const address = `181 Orchard Road
-#11-01/02 Orchard Central`;
-const postalcode = "238896";
-const businesshours = `Lunch - 11:30am - 3:00pm
-Dinner - 6:00pm – 10:00pm`;
-const contact = `Jae Soh ( Mr. ) / Sammi Lin ( Ms )
-6238 1516 / 9298 9344 / 9109 4064
-Fax: 6238 8007`;
-const slug = "oc";
-const mailto = `mailto:${slug}@banheng.com.sg`;
-const directions = `Non driver: One minute walking distant from 313 building, exit from 313 building, facing Orchard Road and turn right to Orchard Central building, take the lift labeled as orange colour to level 11, Roof Garden.
-Driver: Valet parking is available at level 1, beside the taxi stand of the Orchard Central building along the Killney Road or you could drive to level 10C and take one staircase up to level 11.`;
 
 export default class OrchardCentral extends Component {
   render() {
+    const RestaurantArrayData = RestaurantsArrayData.filter(
+      e => e.pagename === pagename
+    );
+
+    const myslides = RestaurantArrayData.map(restaurant => restaurant.myslides);
+
+    const email = RestaurantArrayData.map(restaurant => restaurant.email);
+    const mailto = `mailto:${email}`;
+    const lat = Number(
+      RestaurantArrayData.map(restaurant => restaurant.latlng.lat)
+    );
+    const lng = Number(
+      RestaurantArrayData.map(restaurant => restaurant.latlng.lng)
+    );
+    const zoom = parseInt(
+      RestaurantArrayData.map(restaurant => restaurant.zoom)
+    );
+
     return (
       <div className={pagename}>
-        <RestaurantCarousel myslides={myslides} />
+        <RestaurantCarousel myslides={myslides[0]} />
+        <PackageMonthly monthlypackagesdata={MonthlyPackageData} />
+        <PackageBirthday birthdaypackagesdata={BirthdayPackageData} />
+        <PackageIndividual individualpackagesdata={IndividualPackageData} />
+        <PackageWedding weddingpackagesdata={WeddingPackageData} />
         <RestaurantContact
-          restaurant={restaurant}
-          address={address}
-          postalcode={postalcode}
-          businesshours={businesshours}
-          contact={contact}
-          slug={slug}
+          restaurant={RestaurantArrayData.map(restaurant => restaurant.name)}
+          address={RestaurantArrayData.map(restaurant => restaurant.address)}
+          postalcode={RestaurantArrayData.map(
+            restaurant => restaurant.postalcode
+          )}
+          businesshours={RestaurantArrayData.map(
+            restaurant => restaurant.businesshours
+          )}
+          contact={RestaurantArrayData.map(restaurant => restaurant.contact)}
+          email={email}
           mailto={mailto}
-          directions={directions}
+          directions={RestaurantArrayData.map(
+            restaurant => restaurant.directions
+          )}
           lat={lat}
           lng={lng}
           zoom={zoom}

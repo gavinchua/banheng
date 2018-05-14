@@ -23,8 +23,7 @@ export default class RestaurantForm extends Component {
       <div className="container">
         <Formik
           initialValues={{
-            weddingCoupleName: "",
-            weddingContactPerson: "",
+            name: "",
             mobile: "",
             email: "",
             reservation: "",
@@ -36,11 +35,7 @@ export default class RestaurantForm extends Component {
           onSubmit={async values => {
             let formData = new FormData();
 
-            formData.append("weddingCoupleName", values.weddingCoupleName);
-            formData.append(
-              "weddingContactPerson",
-              values.weddingContactPerson
-            );
+            formData.append("name", values.name);
             formData.append("mobile", values.mobile);
             formData.append("email", values.email);
             formData.append("email", values.reservation);
@@ -53,16 +48,17 @@ export default class RestaurantForm extends Component {
             // const res = await fetch("posturl", { method: "POST", body: formData });
             // Do whatever on the sever
             alert("Form submitted!");
-            //console.log(formData.get("weddingCoupleName"));
-            console.log(formData);
+            console.log(formData.get("name"));
+            console.log(formData.get("mobile"));
+            console.log(formData.get("email"));
+            console.log(formData.get("reservation"));
+            console.log(formData.get("table"));
+            console.log(formData.get("guest"));
+            console.log(formData.get("message"));
+            console.log(formData.get("recaptcha"));
           }}
           validationSchema={yup.object().shape({
-            weddingCoupleName: yup
-              .string()
-              .required("Please check Name Of Couple."),
-            weddingContactPerson: yup
-              .string()
-              .required("Please check Contact person."),
+            name: yup.string().required("Please check Name."),
             mobile: yup
               .string()
               .min(8, "Mobile must have min. of 8 digits")
@@ -121,46 +117,22 @@ export default class RestaurantForm extends Component {
               </p>
 
               <div className="form-group">
-                <label htmlFor="name">Name Of Couple</label>
+                <label htmlFor="name">Name</label>
                 <input
-                  id="weddingCoupleName"
-                  name="weddingCoupleName"
+                  id="name"
+                  name="name"
                   type="text"
-                  className={`form-control ${errors.weddingCoupleName &&
-                    touched.weddingCoupleName &&
+                  className={`form-control ${errors.name &&
+                    touched.name &&
                     "is-invalid"}`}
-                  placeholder="Name Of Couple"
-                  value={values.weddingCoupleName}
+                  placeholder="Name"
+                  value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.weddingCoupleName &&
-                  touched.weddingCoupleName && (
-                    <p className="invalid-feedback">
-                      {errors.weddingCoupleName}
-                    </p>
-                  )}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="name">Contact person</label>
-                <input
-                  id="weddingContactPerson"
-                  name="weddingContactPerson"
-                  type="text"
-                  className={`form-control ${errors.weddingContactPerson &&
-                    touched.weddingContactPerson &&
-                    "is-invalid"}`}
-                  placeholder="Contact person"
-                  value={values.weddingContactPerson}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.weddingContactPerson &&
-                  touched.weddingContactPerson && (
-                    <p className="invalid-feedback">
-                      {errors.weddingContactPerson}
-                    </p>
+                {errors.name &&
+                  touched.name && (
+                    <p className="invalid-feedback">{errors.name}</p>
                   )}
               </div>
 

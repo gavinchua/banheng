@@ -1,43 +1,65 @@
 import React, { Component } from "react";
-import RestaurantContact from "../components/restaurant/Contact";
-import RestaurantCarousel from "../components/restaurant/Carousel";
 
+// Data
+import WeddingPackageData from "../data/WeddingPackages.json";
+import MonthlyPackageData from "../data/MonthlyPackages.json";
+import BirthdayPackageData from "../data/BirthdayPackages.json";
+import IndividualPackageData from "../data/IndividualPackages.json";
+import RestaurantsArrayData from "../data/RestaurantsArray.json";
+
+// Components
+import RestaurantCarousel from "../components/restaurant/Carousel";
+import PackageWedding from "../components/package/Wedding";
+import PackageMonthly from "../components/package/Monthly";
+import PackageBirthday from "../components/package/Birthday";
+import PackageIndividual from "../components/package/Individual";
+import RestaurantContact from "../components/restaurant/Contact";
+
+// Global
 const pagename = "thecathay";
-const myslides = [
-  { src: "https://placeimg.com/1000/300/any", altText: "" },
-  { src: "https://placeimg.com/1000/300/any", altText: "" },
-  { src: "https://placeimg.com/1000/300/any", altText: "" }
-];
-const lat = 1.2993889;
-const lng = 103.847398;
-const zoom = 16;
-const restaurant = "The Cathay";
-const address = `2 Handy Road
-#02-01 The Cathay`;
-const postalcode = "229233";
-const businesshours = `Lunch - 11:30am - 3:00pm
-Dinner - 6:00pm – 10:00pm`;
-const contact = `Dennis Zhao ( Mr. ) / Sammi Lin ( Ms )
-6732 7888 / 9230 2513 / 9109 4064
-Fax: 6732 1203`;
-const slug = "thecathay";
-const mailto = `mailto:${slug}@banheng.com.sg`;
-const directions = "Dhoby Ghaut MRT Exit A";
 
 export default class TheCathay extends Component {
   render() {
+    const RestaurantArrayData = RestaurantsArrayData.filter(
+      e => e.pagename === pagename
+    );
+
+    const myslides = RestaurantArrayData.map(restaurant => restaurant.myslides);
+
+    const email = RestaurantArrayData.map(restaurant => restaurant.email);
+    const mailto = `mailto:${email}`;
+    const lat = Number(
+      RestaurantArrayData.map(restaurant => restaurant.latlng.lat)
+    );
+    const lng = Number(
+      RestaurantArrayData.map(restaurant => restaurant.latlng.lng)
+    );
+    const zoom = parseInt(
+      RestaurantArrayData.map(restaurant => restaurant.zoom)
+    );
+
     return (
       <div className={pagename}>
-        <RestaurantCarousel myslides={myslides} />
+        <RestaurantCarousel myslides={myslides[0]} />
+        <PackageMonthly monthlypackagesdata={MonthlyPackageData} />
+        <PackageBirthday birthdaypackagesdata={BirthdayPackageData} />
+        <PackageIndividual individualpackagesdata={IndividualPackageData} />
+        <PackageWedding weddingpackagesdata={WeddingPackageData} />
         <RestaurantContact
-          restaurant={restaurant}
-          address={address}
-          postalcode={postalcode}
-          businesshours={businesshours}
-          contact={contact}
-          slug={slug}
+          restaurant={RestaurantArrayData.map(restaurant => restaurant.name)}
+          address={RestaurantArrayData.map(restaurant => restaurant.address)}
+          postalcode={RestaurantArrayData.map(
+            restaurant => restaurant.postalcode
+          )}
+          businesshours={RestaurantArrayData.map(
+            restaurant => restaurant.businesshours
+          )}
+          contact={RestaurantArrayData.map(restaurant => restaurant.contact)}
+          email={email}
           mailto={mailto}
-          directions={directions}
+          directions={RestaurantArrayData.map(
+            restaurant => restaurant.directions
+          )}
           lat={lat}
           lng={lng}
           zoom={zoom}

@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import WeddingPackageData from "../data/WeddingPackages.json";
 import MonthlyPackageData from "../data/MonthlyPackages.json";
 import BirthdayPackageData from "../data/BirthdayPackages.json";
+import IndividualPackageData from "../data/IndividualPackages.json";
 import RestaurantsArrayData from "../data/RestaurantsArray.json";
 
 // Components
@@ -11,6 +12,7 @@ import RestaurantCarousel from "../components/restaurant/Carousel";
 import PackageWedding from "../components/package/Wedding";
 import PackageMonthly from "../components/package/Monthly";
 import PackageBirthday from "../components/package/Birthday";
+import PackageIndividual from "../components/package/Individual";
 import RestaurantContact from "../components/restaurant/Contact";
 
 // Global
@@ -18,16 +20,16 @@ const pagename = "harbourfront";
 
 export default class HabourFront extends Component {
   render() {
-    console.log(WeddingPackageData);
+    //console.log(WeddingPackageData);
 
-    console.log(RestaurantsArrayData);
+    //console.log(RestaurantsArrayData);
     const RestaurantArrayData = RestaurantsArrayData.filter(
-      e => e.pagename === "harbourfront"
+      e => e.pagename === pagename
     );
-    console.log(RestaurantArrayData);
+    //console.log(RestaurantArrayData);
 
     const myslides = RestaurantArrayData.map(restaurant => restaurant.myslides);
-    console.log(myslides[0]);
+    //console.log(myslides[0]);
 
     const email = RestaurantArrayData.map(restaurant => restaurant.email);
     const mailto = `mailto:${email}`;
@@ -46,6 +48,7 @@ export default class HabourFront extends Component {
         <RestaurantCarousel myslides={myslides[0]} />
         <PackageMonthly monthlypackagesdata={MonthlyPackageData} />
         <PackageBirthday birthdaypackagesdata={BirthdayPackageData} />
+        <PackageIndividual individualpackagesdata={IndividualPackageData} />
         <PackageWedding weddingpackagesdata={WeddingPackageData} />
         <RestaurantContact
           restaurant={RestaurantArrayData.map(restaurant => restaurant.name)}

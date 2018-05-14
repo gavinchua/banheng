@@ -8,7 +8,7 @@
     "postalcode": "099253",
     "businesshours": "Lunch - 11:30am - 2:30pm\nDinner - 6:00pm – 10:00pm",
     "contact":
-      "9297 0134 / 9720 8018\nPlease contact Sales Team:\nJessie, Candy, Sammi ( Ms ).\nTel: 6278 0288 /6278 1354 /6278 1361\nFax: 6278 6080",
+      "9297 0134 / 9720 8018\nPlease contact Sales Team:\nJessie, Candy, Sammi ( Ms ).\nTel: 6278 0288 / 6278 1354 / 6278 1361\nFax: 6278 6080",
     "directions":
       "Alight from HarbourFront MRT Station (NE1), take Exit B. Follow the Cruise Centre sign; take lift at Lobby C (next to Cruise Departure/ Arrival Hall) to Level 4.",
     "latlng": {
@@ -27,15 +27,111 @@
     "name": "The Cathay",
     "pagename": "thecathay",
     "email": "thecathay@banheng.com.sg",
-    "address": "1 Maritime Square\n#04-01 HarbourFront Centre",
-    "postalcode": "099253",
-    "businesshours": "Lunch - 11:30am - 2:30pm\nDinner - 6:00pm – 10:00pm",
-    "contact": "",
-    "directions": "",
+    "address": "2 Handy Road\n#02-01 The Cathay",
+    "postalcode": "229233",
+    "businesshours": "Lunch - 11:30am - 3:00pm\nDinner - 6:00pm – 10:00pm",
+    "contact":
+      "Dennis Zhao ( Mr. ) / Sammi Lin ( Ms )\nTel: 6732 7888 / 9230 2513 / 9109 4064\nFax: 6732 1203",
+    "directions": "Dhoby Ghaut MRT Exit A",
     "latlng": {
-      "lat": 1.264553,
-      "lng": 103.819304
+      "lat": 1.2993889,
+      "lng": 103.847398
     },
-    "zoom": 16
+    "zoom": 16,
+    "myslides": [
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-02.jpg"
+      },
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-03.jpg"
+      },
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-04.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Aranda Country Club",
+    "pagename": "arandacountryclub",
+    "email": "acc@banheng.com.sg",
+    "address": "60 Pasir Ris Drive 3",
+    "postalcode": "519497",
+    "businesshours": "Lunch - 11:30am - 3:00pm\nDinner - 6:00pm – 10:30pm",
+    "contact":
+      "Steven ( Mr. ) / Sammi Lin ( Ms )\nTel: 6585 1770 / 9233 7816 / 9109 4064\nFax: 6585 1679",
+    "directions": "Open To Public , Next to NTUC Downtown East",
+    "latlng": {
+      "lat": 1.375975,
+      "lng": 103.953444
+    },
+    "zoom": 16,
+    "myslides": [
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-02.jpg"
+      },
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-03.jpg"
+      },
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-04.jpg"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Orchard Central",
+    "pagename": "orchardcentral",
+    "email": "oc@banheng.com.sg",
+    "address": "181 Orchard Road\n#11-01/02 Orchard Central",
+    "postalcode": "238896",
+    "businesshours": "Lunch - 11:30am - 3:00pm\nDinner - 6:00pm – 10:00pm",
+    "contact":
+      "Jae Soh / Sammi Lin\nTel: 6238 1516 / 9298 9344 / 9109 4064\nFax: 6238 8007",
+    "directions":
+      "Non driver: One minute walking distant from 313 building, exit from 313 building, facing Orchard Road and turn right to Orchard Central building, take the lift labeled as orange colour to level 11, Roof Garden.\nDriver: Valet parking is available at level1, beside the taxi stand of the Orchard Central building along the Killney Road or you could drive to level10C and take one staircase up to level 11.",
+    "latlng": {
+      "lat": 1.300934,
+      "lng": 103.840008
+    },
+    "zoom": 16,
+    "myslides": [
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-02.jpg"
+      },
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-03.jpg"
+      },
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-04.jpg"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Boon Keng",
+    "pagename": "boonkeng",
+    "email": "boonkeng@banheng.com.sg",
+    "address": "Blk 22 Boon Keng Road #01-21",
+    "postalcode": "330022",
+    "businesshours": "Lunch - 11:30am - 3:00pm\nDinner - 6:00pm – 10:30pm",
+    "contact": "Tel: 6291 0407 / 6298 5285\nFax: 6392 4240",
+    "directions": "One minute walk from Boon Keng MRT Station (NE9)",
+    "latlng": {
+      "lat": 1.317953,
+      "lng": 103.861279
+    },
+    "zoom": 16,
+    "myslides": [
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-02.jpg"
+      },
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-03.jpg"
+      },
+      {
+        "src": "https://gavinchua.com/banheng/img/habourfront-center-04.jpg"
+      }
+    ]
   }
 ]

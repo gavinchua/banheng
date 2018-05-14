@@ -1,43 +1,65 @@
 import React, { Component } from "react";
-import RestaurantContact from "../components/restaurant/Contact";
-import RestaurantCarousel from "../components/restaurant/Carousel";
 
+// Data
+import WeddingPackageData from "../data/WeddingPackages.json";
+import MonthlyPackageData from "../data/MonthlyPackages.json";
+import BirthdayPackageData from "../data/BirthdayPackages.json";
+import IndividualPackageData from "../data/IndividualPackages.json";
+import RestaurantsArrayData from "../data/RestaurantsArray.json";
+
+// Components
+import RestaurantCarousel from "../components/restaurant/Carousel";
+import PackageWedding from "../components/package/Wedding";
+import PackageMonthly from "../components/package/Monthly";
+import PackageBirthday from "../components/package/Birthday";
+import PackageIndividual from "../components/package/Individual";
+import RestaurantContact from "../components/restaurant/Contact";
+
+// Global
 const pagename = "arandacountryclub";
-const myslides = [
-  { src: "https://placeimg.com/1000/300/any", altText: "" },
-  { src: "https://placeimg.com/1000/300/any", altText: "" },
-  { src: "https://placeimg.com/1000/300/any", altText: "" }
-];
-const lat = 1.375975;
-const lng = 103.953444;
-const zoom = 16;
-const restaurant = "Aranda Country Club";
-const address = "60 Pasir Ris Drive 3";
-const postalcode = "519497";
-const businesshours = `Lunch - 11:30am - 3:00pm
-Dinner - 6:00pm – 10:30pm
-Closed on every Monday (Excluding PHs & CNY period)`;
-const contact = `Steven ( Mr. ) / Sammi Lin ( Ms )
-6585 1770 / 9233 7816 / 9109 4064
-Fax: 6585 1679`;
-const slug = "acc";
-const mailto = `mailto:${slug}@banheng.com.sg`;
-const directions = "Open To Public , Next to NTUC Downtown East";
 
 export default class ArandaCountryClub extends Component {
   render() {
+    const RestaurantArrayData = RestaurantsArrayData.filter(
+      e => e.pagename === pagename
+    );
+
+    const myslides = RestaurantArrayData.map(restaurant => restaurant.myslides);
+
+    const email = RestaurantArrayData.map(restaurant => restaurant.email);
+    const mailto = `mailto:${email}`;
+    const lat = Number(
+      RestaurantArrayData.map(restaurant => restaurant.latlng.lat)
+    );
+    const lng = Number(
+      RestaurantArrayData.map(restaurant => restaurant.latlng.lng)
+    );
+    const zoom = parseInt(
+      RestaurantArrayData.map(restaurant => restaurant.zoom)
+    );
+
     return (
       <div className={pagename}>
-        <RestaurantCarousel myslides={myslides} />
+        <RestaurantCarousel myslides={myslides[0]} />
+        <PackageMonthly monthlypackagesdata={MonthlyPackageData} />
+        <PackageBirthday birthdaypackagesdata={BirthdayPackageData} />
+        <PackageIndividual individualpackagesdata={IndividualPackageData} />
+        <PackageWedding weddingpackagesdata={WeddingPackageData} />
         <RestaurantContact
-          restaurant={restaurant}
-          address={address}
-          postalcode={postalcode}
-          businesshours={businesshours}
-          contact={contact}
-          slug={slug}
+          restaurant={RestaurantArrayData.map(restaurant => restaurant.name)}
+          address={RestaurantArrayData.map(restaurant => restaurant.address)}
+          postalcode={RestaurantArrayData.map(
+            restaurant => restaurant.postalcode
+          )}
+          businesshours={RestaurantArrayData.map(
+            restaurant => restaurant.businesshours
+          )}
+          contact={RestaurantArrayData.map(restaurant => restaurant.contact)}
+          email={email}
           mailto={mailto}
-          directions={directions}
+          directions={RestaurantArrayData.map(
+            restaurant => restaurant.directions
+          )}
           lat={lat}
           lng={lng}
           zoom={zoom}
