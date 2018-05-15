@@ -122,7 +122,10 @@ export default class RestaurantForm extends Component {
             setFieldValue
           }) => (
             <form onSubmit={handleSubmit}>
-              <p>This form is WIP. Its not going anywhere yet. formData is generated.</p>
+              <p>
+                This form is WIP. Its not going anywhere yet. formData is
+                generated.
+              </p>
               <p>
                 Your reservations are subject to the restaurant seats
                 availability, kindly wait for the restaurant email/call for
@@ -351,6 +354,18 @@ export default class RestaurantForm extends Component {
                     {
                       value: "Aranda Country Club",
                       label: "Aranda Country Club"
+                    },
+                    {
+                      value: "The Cathay",
+                      label: "The Cathay"
+                    },
+                    {
+                      value: "Orchard Central",
+                      label: "Orchard Central"
+                    },
+                    {
+                      value: "Boon Keng",
+                      label: "Boon Keng"
                     }
                   ]}
                 />
