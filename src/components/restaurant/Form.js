@@ -29,7 +29,7 @@ export default class RestaurantForm extends Component {
             weddingMobileNumber: "",
             weddingHomeNumber: "",
             weddingAddress: "",
-            weddingPurpose: "",
+            weddingPurpose: "Wedding",
             table: "",
             guest: "",
             weddingMessage: "",
@@ -79,7 +79,6 @@ export default class RestaurantForm extends Component {
               .string()
               .min(8, "Home No. must have min. of 8 digits"),
             weddingAddress: yup.string(),
-            weddingPurpose: yup.string().required("Please check Purpose."),
             table: yup
               .number()
               .typeError("No. of table/s must be a number")
@@ -272,10 +271,6 @@ export default class RestaurantForm extends Component {
                   Purpose
                   <small className="required">*</small>
                 </label>
-                {errors.weddingPurpose &&
-                  touched.weddingPurpose && (
-                    <p className="invalid-feedback">{errors.weddingPurpose}</p>
-                  )}
                 <div className="form-check">
                   <div className="form-check form-check-inline">
                     <input
@@ -283,8 +278,11 @@ export default class RestaurantForm extends Component {
                       name="weddingPurpose"
                       type="radio"
                       className="form-check-input"
-                      value="Wedding"
-                      checked
+                      value={values.weddingPurpose}
+                      checked={values.weddingPurpose === "Wedding"}
+                      onChange={() => {
+                        setFieldValue("weddingPurpose", "Wedding");
+                      }}
                     />
                     <label
                       className="form-check-label"
@@ -299,7 +297,11 @@ export default class RestaurantForm extends Component {
                       name="weddingPurpose"
                       type="radio"
                       className="form-check-input"
-                      value="Function"
+                      value={values.weddingPurpose}
+                      checked={values.weddingPurpose === "Function"}
+                      onChange={() => {
+                        setFieldValue("weddingPurpose", "Function");
+                      }}
                     />
                     <label
                       className="form-check-label"
