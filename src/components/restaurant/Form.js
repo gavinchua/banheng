@@ -343,8 +343,8 @@ export default class RestaurantForm extends Component {
                   name="weddingRestaurant"
                   value={values.weddingRestaurant}
                   clearable={false}
-                  onChange={selectDSChoice => {
-                    setFieldValue("weddingRestaurant", selectDSChoice.value);
+                  onChange={response => {
+                    setFieldValue("weddingRestaurant", response.value);
                   }}
                   options={[
                     {
