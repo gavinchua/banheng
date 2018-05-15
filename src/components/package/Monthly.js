@@ -9,9 +9,7 @@ export default class PackageMonthly extends Component {
     var monthlyPackageList = this.props.monthlypackagesdata.map(
       (monthlypackages, index) => (
         <li key={monthlypackages.id}>
-          <a href={monthlypackages.file}>
-            {monthlypackages.name}
-          </a>
+          <a href={monthlypackages.file}>{monthlypackages.name}</a>
         </li>
       )
     );

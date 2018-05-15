@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
 import yup from "yup";
+
 import Select from "react-select";
+import "react-select/dist/react-select.css";
 import Recaptcha from "react-recaptcha";
 
 export default class RestaurantForm extends Component {
@@ -30,8 +32,10 @@ export default class RestaurantForm extends Component {
             weddingHomeNumber: "",
             weddingAddress: "",
             weddingPurpose: "Wedding",
-            table: "",
-            guest: "",
+            weddingRestaurant: "HarbourFront Centre",
+            weddingDate: "",
+            weddingTable: "",
+            weddingGuests: "",
             weddingMessage: "",
             recaptcha: ""
           }}
@@ -48,8 +52,10 @@ export default class RestaurantForm extends Component {
             formData.append("weddingHomeNumber", values.weddingHomeNumber);
             formData.append("weddingAddress", values.weddingAddress);
             formData.append("weddingPurpose", values.weddingPurpose);
-            formData.append("table", values.table);
-            formData.append("guest", values.guest);
+            formData.append("weddingRestaurant", values.weddingRestaurant);
+            formData.append("weddingDate", values.weddingDate);
+            formData.append("weddingTable", values.weddingTable);
+            formData.append("weddingGuests", values.weddingGuests);
             formData.append("weddingMessage", values.weddingMessage);
             formData.append("recaptcha", values.recaptcha);
 
@@ -57,8 +63,19 @@ export default class RestaurantForm extends Component {
             // const res = await fetch("posturl", { method: "POST", body: formData });
             // Do whatever on the sever
             alert("Form submitted!");
-            //console.log(formData.get("weddingCoupleName"));
-            console.log(formData);
+            console.log(formData.get("weddingCoupleName"));
+            console.log(formData.get("weddingContactPerson"));
+            console.log(formData.get("weddingEmail"));
+            console.log(formData.get("weddingMobileNumber"));
+            console.log(formData.get("weddingHomeNumber"));
+            console.log(formData.get("weddingAddress"));
+            console.log(formData.get("weddingPurpose"));
+            console.log(formData.get("weddingRestaurant"));
+            console.log(formData.get("weddingDate"));
+            console.log(formData.get("weddingTable"));
+            console.log(formData.get("weddingGuests"));
+            console.log(formData.get("weddingMessage"));
+            console.log(formData.get("recaptcha"));
           }}
           validationSchema={yup.object().shape({
             weddingCoupleName: yup
@@ -79,12 +96,15 @@ export default class RestaurantForm extends Component {
               .string()
               .min(8, "Home No. must have min. of 8 digits"),
             weddingAddress: yup.string(),
-            table: yup
+            weddingPurpose: yup.string(),
+            weddingRestaurant: yup.string(),
+            weddingDate: yup.date(),
+            weddingTable: yup
               .number()
               .typeError("No. of table/s must be a number")
               .moreThan(0, "No. of table/s must be greater than zero")
               .required("Please check No. of Table/s required."),
-            guest: yup
+            weddingGuests: yup
               .number()
               .typeError("No. of guest/s must be a number")
               .moreThan(0, "No. of guest/s must be greater than zero")
@@ -102,7 +122,7 @@ export default class RestaurantForm extends Component {
             setFieldValue
           }) => (
             <form onSubmit={handleSubmit}>
-              <p>This form is WIP. Its not going anywhere yet.</p>
+              <p>This form is WIP. Its not going anywhere yet. formData is generated.</p>
               <p>
                 Your reservations are subject to the restaurant seats
                 availability, kindly wait for the restaurant email/call for
@@ -232,7 +252,7 @@ export default class RestaurantForm extends Component {
                   name="weddingHomeNumber"
                   type="tel"
                   className={`form-control ${errors.weddingHomeNumber &&
-                    touched.v &&
+                    touched.weddingHomeNumber &&
                     "is-invalid"}`}
                   placeholder="Home No."
                   value={values.weddingHomeNumber}
@@ -314,42 +334,88 @@ export default class RestaurantForm extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="table">No. of Table/s</label>
+                <label htmlFor="table">Restaurant</label>
+                <Select
+                  id="weddingRestaurant"
+                  name="weddingRestaurant"
+                  value={values.weddingRestaurant}
+                  clearable={false}
+                  onChange={selectDSChoice => {
+                    setFieldValue("weddingRestaurant", selectDSChoice.value);
+                  }}
+                  options={[
+                    {
+                      value: "HarbourFront Centre",
+                      label: "HarbourFront Centre"
+                    },
+                    {
+                      value: "Aranda Country Club",
+                      label: "Aranda Country Club"
+                    }
+                  ]}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="weddingDate">
+                  Wedding Date
+                  <small className="required">*</small>
+                </label>
                 <input
-                  id="table"
-                  name="table"
-                  type="number"
-                  className={`form-control ${errors.table &&
-                    touched.table &&
+                  id="weddingDate"
+                  name="weddingDate"
+                  type="text"
+                  className={`form-control ${errors.weddingDate &&
+                    touched.weddingDate &&
                     "is-invalid"}`}
-                  placeholder="No. of Table/s"
-                  value={values.table}
+                  placeholder="Wedding Date"
+                  value={values.weddingDate}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.table &&
-                  touched.table && (
-                    <p className="invalid-feedback">{errors.table}</p>
+                {errors.weddingDate &&
+                  touched.weddingDate && (
+                    <p className="invalid-feedback">{errors.weddingDate}</p>
                   )}
               </div>
 
               <div className="form-group">
-                <label htmlFor="guest">No. of Guest/s</label>
+                <label htmlFor="table">No. of Table/s</label>
                 <input
-                  id="guest"
-                  name="guest"
-                  type="number"
-                  className={`form-control ${errors.guest &&
-                    touched.guest &&
+                  id="weddingTable"
+                  name="weddingTable"
+                  type="text"
+                  className={`form-control ${errors.weddingTable &&
+                    touched.weddingTable &&
                     "is-invalid"}`}
-                  placeholder="No. of Guest/s"
-                  value={values.guest}
+                  placeholder="No. of Table/s"
+                  value={values.weddingTable}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.guest &&
-                  touched.guest && (
-                    <p className="invalid-feedback">{errors.guest}</p>
+                {errors.weddingTable &&
+                  touched.weddingTable && (
+                    <p className="invalid-feedback">{errors.weddingTable}</p>
+                  )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="weddingGuests">No. of Guest/s</label>
+                <input
+                  id="weddingGuests"
+                  name="weddingGuests"
+                  type="text"
+                  className={`form-control ${errors.weddingGuests &&
+                    touched.weddingGuests &&
+                    "is-invalid"}`}
+                  placeholder="No. of Guest/s"
+                  value={values.weddingGuests}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.weddingGuests &&
+                  touched.weddingGuests && (
+                    <p className="invalid-feedback">{errors.weddingGuests}</p>
                   )}
               </div>
 
