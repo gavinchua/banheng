@@ -58,3 +58,8 @@
   font-size: 80%;
   color: #dc3545;
 }
+
+/* Date Picker */
+.DayPickerInput {
+  display: block;
+}

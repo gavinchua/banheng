@@ -4,6 +4,9 @@ import yup from "yup";
 
 import Select from "react-select";
 import "react-select/dist/react-select.css";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import { formatDate, parseDate } from "react-day-picker/moment";
+import "react-day-picker/lib/style.css";
 import Recaptcha from "react-recaptcha";
 
 export default class RestaurantForm extends Component {
@@ -33,7 +36,7 @@ export default class RestaurantForm extends Component {
             weddingAddress: "",
             weddingPurpose: "Wedding",
             weddingRestaurant: "HarbourFront Centre",
-            weddingDate: "",
+            weddingDate: new Date(),
             weddingTable: "",
             weddingGuests: "",
             weddingMessage: "",
@@ -376,17 +379,26 @@ export default class RestaurantForm extends Component {
                   Wedding Date
                   <small className="required">*</small>
                 </label>
-                <input
+                <DayPickerInput
+                  const inputClassName={`form-control ${errors.weddingMessage &&
+                    touched.weddingMessage &&
+                    "is-invalid"}`}
                   id="weddingDate"
                   name="weddingDate"
+                  inputProps={{
+                    className: "form-control"
+                  }}
                   type="text"
-                  className={`form-control ${errors.weddingDate &&
-                    touched.weddingDate &&
-                    "is-invalid"}`}
-                  placeholder="Wedding Date"
+                  placeholder="Wedding Date(DD/MM/YYYY)"
                   value={values.weddingDate}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  format="DD/MM/YYYY"
+                  formatDate={formatDate}
+                  parseDate={parseDate}
+                  dayPickerProps={{
+                    disabledDays: { before: new Date() }
+                  }}
                 />
                 {errors.weddingDate &&
                   touched.weddingDate && (
