@@ -51,6 +51,6 @@ Temporary Items
   / node_modules
 
 # Files to ignore
-package - lock.json
-yarn.lock
+  package - lock.json
+  yarn.lock
   .zip
