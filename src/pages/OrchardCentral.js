@@ -35,7 +35,7 @@ export default class OrchardCentral extends Component {
       RestaurantArrayData.map(restaurant => restaurant.latlng.lng)
     );
     const zoom = parseInt(
-      RestaurantArrayData.map(restaurant => restaurant.zoom)
+      RestaurantArrayData.map(restaurant => restaurant.zoom), 10
     );
 
     return (
