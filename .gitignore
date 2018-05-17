@@ -6,7 +6,7 @@ ehthumbs.db
 Desktop.ini
 
 # Recycle Bin used on file shares
-$RECYCLE.BIN /
+$RECYCLE.BIN/
 
 # Windows Installer files
 *.cab
@@ -23,18 +23,17 @@ $RECYCLE.BIN /
 
 # OSX
 # =========================
-
 .DS_Store
 .AppleDouble
 .LSOverride
 
 # Thumbnails
-._ *
+._*
 
 # Files that might appear in the root of a volume
-.DocumentRevisions - V100
+.DocumentRevisions-V100
 .fseventsd
-.Spotlight - V100
+.Spotlight-V100
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
@@ -51,6 +50,7 @@ Temporary Items
 /node_modules
 
 # Files to ignore
-package - lock.json
+package-lock.json
 yarn.lock
+yarn-error.log
 .zip
