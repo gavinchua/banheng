@@ -340,7 +340,10 @@ export default class RestaurantForm extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="table">Restaurant</label>
+                <label htmlFor="table">
+                  Restaurant
+                  <small className="required">*</small>
+                </label>
                 <Select
                   id="weddingRestaurant"
                   name="weddingRestaurant"
@@ -380,7 +383,8 @@ export default class RestaurantForm extends Component {
                   <small className="required">*</small>
                 </label>
                 <DayPickerInput
-                  const inputClassName={`form-control ${errors.weddingMessage &&
+                  const
+                  inputClassName={`form-control ${errors.weddingMessage &&
                     touched.weddingMessage &&
                     "is-invalid"}`}
                   id="weddingDate"
@@ -407,7 +411,10 @@ export default class RestaurantForm extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="table">No. of Table/s</label>
+                <label htmlFor="table">
+                  No. of Table/s
+                  <small className="required">*</small>
+                </label>
                 <input
                   id="weddingTable"
                   name="weddingTable"
@@ -427,7 +434,10 @@ export default class RestaurantForm extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="weddingGuests">No. of Guest/s</label>
+                <label htmlFor="weddingGuests">
+                  No. of Guest/s
+                  <small className="required">*</small>
+                </label>
                 <input
                   id="weddingGuests"
                   name="weddingGuests"
@@ -466,7 +476,6 @@ export default class RestaurantForm extends Component {
               </div>
 
               <div className="form-group">
-                <label>Recaptcha Validation</label>
                 <Recaptcha
                   sitekey={recaptchaKey}
                   render="explicit"
@@ -485,7 +494,7 @@ export default class RestaurantForm extends Component {
               </div>
 
               <button type="submit" className="btn btn-primary">
-                submit
+                Submit
               </button>
 
               <p className="text-center">
