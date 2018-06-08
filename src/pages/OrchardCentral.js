@@ -39,32 +39,46 @@ export default class OrchardCentral extends Component {
     );
 
     return (
-      <div className={pagename}>
-        <RestaurantCarousel myslides={myslides[0]} />
-        <PackageMonthly monthlypackagesdata={MonthlyPackageData} />
-        <PackageBirthday birthdaypackagesdata={BirthdayPackageData} />
-        <PackageIndividual individualpackagesdata={IndividualPackageData} />
-        <PackageWedding weddingpackagesdata={WeddingPackageData} />
-        <RestaurantContact
-          restaurant={RestaurantArrayData.map(restaurant => restaurant.name)}
-          address={RestaurantArrayData.map(restaurant => restaurant.address)}
-          postalcode={RestaurantArrayData.map(
-            restaurant => restaurant.postalcode
-          )}
-          businesshours={RestaurantArrayData.map(
-            restaurant => restaurant.businesshours
-          )}
-          contact={RestaurantArrayData.map(restaurant => restaurant.contact)}
-          email={email}
-          mailto={mailto}
-          directions={RestaurantArrayData.map(
-            restaurant => restaurant.directions
-          )}
-          lat={lat}
-          lng={lng}
-          zoom={zoom}
-        />
-      </div>
+      <main className="{pagename}" role="main">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <RestaurantCarousel myslides={myslides[0]} />
+              <PackageMonthly monthlypackagesdata={MonthlyPackageData} />
+              <PackageBirthday birthdaypackagesdata={BirthdayPackageData} />
+              <PackageIndividual
+                individualpackagesdata={IndividualPackageData}
+              />
+              <PackageWedding weddingpackagesdata={WeddingPackageData} />
+              <RestaurantContact
+                restaurant={RestaurantArrayData.map(
+                  restaurant => restaurant.name
+                )}
+                address={RestaurantArrayData.map(
+                  restaurant => restaurant.address
+                )}
+                postalcode={RestaurantArrayData.map(
+                  restaurant => restaurant.postalcode
+                )}
+                businesshours={RestaurantArrayData.map(
+                  restaurant => restaurant.businesshours
+                )}
+                contact={RestaurantArrayData.map(
+                  restaurant => restaurant.contact
+                )}
+                email={email}
+                mailto={mailto}
+                directions={RestaurantArrayData.map(
+                  restaurant => restaurant.directions
+                )}
+                lat={lat}
+                lng={lng}
+                zoom={zoom}
+              />
+            </div>
+          </div>
+        </div>
+      </main>
     );
   }
 }

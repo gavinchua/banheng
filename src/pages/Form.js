@@ -6,10 +6,16 @@ export default class RestaurantFormComponent extends Component {
   render() {
     //console.log(RestaurantsArray["restaurants"][0]);
     return (
-      <div>
-        <BackButton />
-        <RestaurantForm />
-      </div>
+      <main className="{pagename}" role="main">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <BackButton />
+              <RestaurantForm />
+            </div>
+          </div>
+        </div>
+      </main>
     );
   }
 }
