@@ -26,22 +26,28 @@ const directions = "One minute walk from Boon Keng MRT Station (NE9)";
 export default class BoonKeng extends Component {
   render() {
     return (
-      <div className={pagename}>
-        <RestaurantCarousel myslides={myslides} />
-        <RestaurantContact
-          restaurant={restaurant}
-          address={address}
-          postalcode={postalcode}
-          businesshours={businesshours}
-          contact={contact}
-          slug={slug}
-          mailto={mailto}
-          directions={directions}
-          lat={lat}
-          lng={lng}
-          zoom={zoom}
-        />
-      </div>
+      <main className="{pagename}" role="main">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <RestaurantCarousel myslides={myslides} />
+              <RestaurantContact
+                restaurant={restaurant}
+                address={address}
+                postalcode={postalcode}
+                businesshours={businesshours}
+                contact={contact}
+                slug={slug}
+                mailto={mailto}
+                directions={directions}
+                lat={lat}
+                lng={lng}
+                zoom={zoom}
+              />
+            </div>
+          </div>
+        </div>
+      </main>
     );
   }
 }
