@@ -6,8 +6,7 @@ import {
   Marker,
   InfoWindow
 } from "react-google-maps";
-import { compose, withProps, withStateHandlers } from "recompose";
-import FaAnchor from "react-icons/lib/fa/anchor";
+import { compose, withStateHandlers } from "recompose";
 
 export default class Map extends Component {
   constructor(props) {
