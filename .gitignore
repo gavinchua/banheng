@@ -46,7 +46,6 @@ Temporary Items
 .apdisk
 
 # Directories to ignore
-/public
 /node_modules
 
 # Files to ignore
