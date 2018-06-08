@@ -25,7 +25,7 @@ export default class RestaurantForm extends Component {
   render() {
     const recaptchaKey = "6LdTNVgUAAAAALKYnLSdlxYnUyts0FZ9pQDyS62q";
     return (
-      <div className="container">
+      <React.Fragment>
         <Formik
           initialValues={{
             weddingCoupleName: "",
@@ -505,7 +505,7 @@ export default class RestaurantForm extends Component {
             </form>
           )}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
