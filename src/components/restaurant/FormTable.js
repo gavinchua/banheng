@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
 import yup from "yup";
+
 import Select from "react-select";
+import "react-select/dist/react-select.css";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import { formatDate, parseDate } from "react-day-picker/moment";
+import "react-day-picker/lib/style.css";
 import Recaptcha from "react-recaptcha";
 
-export default class RestaurantForm extends Component {
+export default class FormTable extends Component {
   constructor(props) {
     super(props);
   }
@@ -20,65 +25,79 @@ export default class RestaurantForm extends Component {
   render() {
     const recaptchaKey = "6LdTNVgUAAAAALKYnLSdlxYnUyts0FZ9pQDyS62q";
     return (
-      <div className="container">
+      <React.Fragment>
         <Formik
           initialValues={{
-            name: "",
-            mobile: "",
-            email: "",
-            reservation: "",
-            table: "",
-            guest: "",
-            message: "",
+            tableName: "",
+            tableEmail: "",
+            tableMobileNumber: "",
+            tableAddress: "",
+            tablePurpose: "Buffet",
+            tableRestaurant: "HarbourFront Centre",
+            tableDate: new Date(),
+            tableTable: "",
+            tableGuests: "",
+            tableMessage: "",
             recaptcha: ""
           }}
           onSubmit={async values => {
             let formData = new FormData();
 
-            formData.append("name", values.name);
-            formData.append("mobile", values.mobile);
-            formData.append("email", values.email);
-            formData.append("email", values.reservation);
-            formData.append("table", values.table);
-            formData.append("guest", values.guest);
-            formData.append("message", values.message);
+            formData.append("tableName", values.tableName);
+            formData.append("tableEmail", values.tableEmail);
+            formData.append("tableMobileNumber", values.tableMobileNumber);
+            formData.append("tableAddress", values.tableAddress);
+            formData.append("tablePurpose", values.tablePurpose);
+            formData.append("tableRestaurant", values.tableRestaurant);
+            formData.append("tableDate", values.tableDate);
+            formData.append("tableTable", values.tableTable);
+            formData.append("tableGuests", values.tableGuests);
+            formData.append("tableMessage", values.tableMessage);
             formData.append("recaptcha", values.recaptcha);
 
             // you would submit with fetch for example
             // const res = await fetch("posturl", { method: "POST", body: formData });
             // Do whatever on the sever
             alert("Form submitted!");
-            console.log(formData.get("name"));
-            console.log(formData.get("mobile"));
-            console.log(formData.get("email"));
-            console.log(formData.get("reservation"));
-            console.log(formData.get("table"));
-            console.log(formData.get("guest"));
-            console.log(formData.get("message"));
+            console.log(formData.get("tableName"));
+            console.log(formData.get("tableEmail"));
+            console.log(formData.get("tableMobileNumber"));
+            console.log(formData.get("tableAddress"));
+            console.log(formData.get("tablePurpose"));
+            console.log(formData.get("tableRestaurant"));
+            console.log(formData.get("tableDate"));
+            console.log(formData.get("tableTable"));
+            console.log(formData.get("tableGuests"));
+            console.log(formData.get("tableMessage"));
             console.log(formData.get("recaptcha"));
           }}
           validationSchema={yup.object().shape({
-            name: yup.string().required("Please check Name."),
-            mobile: yup
+            tableName: yup
               .string()
-              .min(8, "Mobile must have min. of 8 digits")
-              .required("Please check Mobile."),
-            email: yup
+              .required("Please check Name."),
+            tableEmail: yup
               .string()
               .email("Email is not valid!")
               .required("Please check Email."),
-            reservation: yup.string().required("Please check Reservation for."),
-            table: yup
+            tableMobileNumber: yup
+              .string()
+              .min(8, "Mobile No. must have min. of 8 digits")
+              .required("Please check Mobile No.."),
+            tableAddress: yup.string(),
+            tablePurpose: yup.string(),
+            tableRestaurant: yup.string(),
+            tableDate: yup.date(),
+            tableTable: yup
               .number()
               .typeError("No. of table/s must be a number")
               .moreThan(0, "No. of table/s must be greater than zero")
               .required("Please check No. of Table/s required."),
-            guest: yup
+            tableGuests: yup
               .number()
               .typeError("No. of guest/s must be a number")
               .moreThan(0, "No. of guest/s must be greater than zero")
               .required("Please check No. of Guest/s required."),
-            message: yup.string().required("Please check Message."),
+            tableMessage: yup.string(),
             recaptcha: yup.string().required("Please check Captcha.")
           })}
           render={({
@@ -90,8 +109,11 @@ export default class RestaurantForm extends Component {
             handleBlur,
             setFieldValue
           }) => (
-            <form onSubmit={handleSubmit}>
-              <p>This form is WIP. Its not going anywhere yet.</p>
+            <form method="post" onSubmit={handleSubmit}>
+              <p>
+                This form is WIP. Its not going anywhere yet. formData is
+                generated.
+              </p>
               <p>
                 Your reservations are subject to the restaurant seats
                 availability, kindly wait for the restaurant email/call for
@@ -113,173 +135,285 @@ export default class RestaurantForm extends Component {
                 确认您的预订是否成功。
               </p>
               <p>
-                <small>All fields are maditory</small>
+                <small>* Mandatory fields</small>
               </p>
 
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="tableName">
+                  Name
+                  <small className="required">*</small>
+                </label>
                 <input
-                  id="name"
-                  name="name"
+                  id="tableName"
+                  name="tableName"
                   type="text"
-                  className={`form-control ${errors.name &&
-                    touched.name &&
+                  className={`form-control ${errors.tableName &&
+                    touched.tableName &&
                     "is-invalid"}`}
                   placeholder="Name"
-                  value={values.name}
+                  value={values.tableName}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.name &&
-                  touched.name && (
-                    <p className="invalid-feedback">{errors.name}</p>
+                {errors.tableName &&
+                  touched.tableName && (
+                    <p className="invalid-feedback">
+                      {errors.tableName}
+                    </p>
                   )}
               </div>
 
               <div className="form-group">
-                <label htmlFor="mobile">Mobile</label>
+                <label htmlFor="tableEmail">
+                  E-mail
+                  <small className="required">*</small>
+                </label>
                 <input
-                  id="mobile"
-                  name="mobile"
-                  type="tel"
-                  className={`form-control ${errors.mobile &&
-                    touched.mobile &&
-                    "is-invalid"}`}
-                  placeholder="Mobile"
-                  value={values.mobile}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.mobile &&
-                  touched.mobile && (
-                    <p className="invalid-feedback">{errors.mobile}</p>
-                  )}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">E-mail</label>
-                <input
-                  id="email"
-                  name="email"
+                  id="tableEmail"
+                  name="tableEmail"
                   type="email"
-                  className={`form-control ${errors.email &&
-                    touched.email &&
+                  className={`form-control ${errors.tableEmail &&
+                    touched.tableEmail &&
                     "is-invalid"}`}
                   placeholder="Email"
-                  value={values.email}
+                  value={values.tableEmail}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.email &&
-                  touched.email && (
-                    <p className="invalid-feedback">{errors.email}</p>
+                {errors.tableEmail &&
+                  touched.tableEmail && (
+                    <p className="invalid-feedback">{errors.tableEmail}</p>
                   )}
               </div>
 
               <div className="form-group">
-                <div className="form-check form-check-inline">
-                  <input
-                    id="reservation"
-                    name="reservation"
-                    type="radio"
-                    className={`form-control form-check-input ${errors.reservation &&
-                      touched.reservation &&
-                      "is-invalid"}`}
-                    value={values.reservation}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  <label className="form-check-label" htmlFor="reservation">
-                    Option 1
-                  </label>
-                  {errors.reservation &&
-                    touched.reservation && (
-                      <p className="invalid-feedback">{errors.reservation}</p>
-                    )}
-                </div>
-                <div className="form-check form-check-inline">
-                  <input
-                    id="reservation"
-                    name="reservation"
-                    type="radio"
-                    className={`form-control form-check-input ${errors.reservation &&
-                      touched.reservation &&
-                      "is-invalid"}`}
-                    value={values.reservation}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  <label className="form-check-label" htmlFor="reservation">
-                    Option 2
-                  </label>
-                  {errors.reservation &&
-                    touched.reservation && (
-                      <p className="invalid-feedback">{errors.reservation}</p>
-                    )}
+                <label htmlFor="tableMobileNumber">
+                  Mobile No.
+                  <small className="required">*</small>
+                </label>
+                <input
+                  id="tableMobileNumber"
+                  name="tableMobileNumber"
+                  type="tel"
+                  className={`form-control ${errors.tableMobileNumber &&
+                    touched.tableMobileNumber &&
+                    "is-invalid"}`}
+                  placeholder="Mobile No."
+                  value={values.tableMobileNumber}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.tableMobileNumber &&
+                  touched.tableMobileNumber && (
+                    <p className="invalid-feedback">
+                      {errors.tableMobileNumber}
+                    </p>
+                  )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="tableAddress">Address</label>
+                <textarea
+                  id="tableAddress"
+                  name="tableAddress"
+                  className={`form-control ${errors.tableAddress &&
+                    touched.tableAddress &&
+                    "is-invalid"}`}
+                  placeholder="Address"
+                  value={values.tableAddress}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.tableAddress &&
+                  touched.tableAddress && (
+                    <p className="invalid-feedback">{errors.tableAddress}</p>
+                  )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="tablePurpose">
+                  Purpose
+                  <small className="required">*</small>
+                </label>
+                <div className="form-check">
+                  <div className="form-check form-check-inline">
+                    <input
+                      id="tablePurposeBuffet"
+                      name="tablePurpose"
+                      type="radio"
+                      className="form-check-input"
+                      value={values.tablePurpose}
+                      checked={values.tablePurpose === "Buffet"}
+                      onChange={() => {
+                        setFieldValue("tablePurpose", "Buffet");
+                      }}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="tablePurposeBuffet"
+                    >
+                      Buffet
+                    </label>
+                  </div>
+                  <div className="form-check form-check-inline">
+                    <input
+                      id="tablePurposeAlaCarte"
+                      name="tablePurpose"
+                      type="radio"
+                      className="form-check-input"
+                      value={values.tablePurpose}
+                      checked={values.tablePurpose === "AlaCarte"}
+                      onChange={() => {
+                        setFieldValue("tablePurpose", "AlaCarte");
+                      }}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="tablePurposeAlaCarte"
+                    >
+                      Function
+                    </label>
+                  </div>
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="table">No. of Table/s</label>
+                <label htmlFor="table">
+                  Restaurant
+                  <small className="required">*</small>
+                </label>
+                <Select
+                  id="tableRestaurant"
+                  name="tableRestaurant"
+                  value={values.tableRestaurant}
+                  clearable={false}
+                  onChange={response => {
+                    setFieldValue("tableRestaurant", response.value);
+                  }}
+                  options={[
+                    {
+                      value: "HarbourFront Centre",
+                      label: "HarbourFront Centre"
+                    },
+                    {
+                      value: "Aranda Country Club",
+                      label: "Aranda Country Club"
+                    },
+                    {
+                      value: "The Cathay",
+                      label: "The Cathay"
+                    },
+                    {
+                      value: "Orchard Central",
+                      label: "Orchard Central"
+                    },
+                    {
+                      value: "Boon Keng",
+                      label: "Boon Keng"
+                    }
+                  ]}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="tableDate">
+                  Date
+                  <small className="required">*</small>
+                </label>
+                <DayPickerInput
+                  const
+                  inputClassName={`form-control ${errors.tableDate &&
+                    touched.tableDate &&
+                    "is-invalid"}`}
+                  id="tableDate"
+                  name="tableDate"
+                  inputProps={{
+                    className: "form-control"
+                  }}
+                  type="text"
+                  placeholder="Date(DD/MM/YYYY)"
+                  value={values.tableDate}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  format="DD/MM/YYYY"
+                  formatDate={formatDate}
+                  parseDate={parseDate}
+                  dayPickerProps={{
+                    disabledDays: { before: new Date() }
+                  }}
+                />
+                {errors.tableDate &&
+                  touched.tableDate && (
+                    <p className="invalid-feedback">{errors.tableDate}</p>
+                  )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="table">
+                  No. of Table/s
+                  <small className="required">*</small>
+                </label>
                 <input
-                  id="table"
-                  name="table"
-                  type="number"
-                  className={`form-control ${errors.table &&
-                    touched.table &&
+                  id="tableTable"
+                  name="tableTable"
+                  type="text"
+                  className={`form-control ${errors.tableTable &&
+                    touched.tableTable &&
                     "is-invalid"}`}
                   placeholder="No. of Table/s"
-                  value={values.table}
+                  value={values.tableTable}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.table &&
-                  touched.table && (
-                    <p className="invalid-feedback">{errors.table}</p>
+                {errors.tableTable &&
+                  touched.tableTable && (
+                    <p className="invalid-feedback">{errors.tableTable}</p>
                   )}
               </div>
 
               <div className="form-group">
-                <label htmlFor="guest">No. of Guest/s</label>
+                <label htmlFor="tableGuests">
+                  No. of Guest/s
+                  <small className="required">*</small>
+                </label>
                 <input
-                  id="guest"
-                  name="guest"
-                  type="number"
-                  className={`form-control ${errors.guest &&
-                    touched.guest &&
+                  id="tableGuests"
+                  name="tableGuests"
+                  type="text"
+                  className={`form-control ${errors.tableGuests &&
+                    touched.tableGuests &&
                     "is-invalid"}`}
                   placeholder="No. of Guest/s"
-                  value={values.guest}
+                  value={values.tableGuests}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.guest &&
-                  touched.guest && (
-                    <p className="invalid-feedback">{errors.guest}</p>
+                {errors.tableGuests &&
+                  touched.tableGuests && (
+                    <p className="invalid-feedback">{errors.tableGuests}</p>
                   )}
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message</label>
+                <label htmlFor="tableMessage">Message</label>
                 <textarea
-                  id="message"
-                  name="message"
-                  className={`form-control ${errors.message &&
-                    touched.message &&
+                  id="tableMessage"
+                  name="tableMessage"
+                  className={`form-control ${errors.tableMessage &&
+                    touched.tableMessage &&
                     "is-invalid"}`}
                   placeholder="Message"
-                  value={values.message}
+                  value={values.tableMessage}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.message &&
-                  touched.message && (
-                    <p className="invalid-feedback">{errors.message}</p>
+                {errors.tableMessage &&
+                  touched.tableMessage && (
+                    <p className="invalid-feedback">{errors.tableMessage}</p>
                   )}
               </div>
 
               <div className="form-group">
-                <label>Recaptcha Validation</label>
                 <Recaptcha
                   sitekey={recaptchaKey}
                   render="explicit"
@@ -298,7 +432,7 @@ export default class RestaurantForm extends Component {
               </div>
 
               <button type="submit" className="btn btn-primary">
-                submit
+                Submit
               </button>
 
               <p className="text-center">
@@ -309,7 +443,7 @@ export default class RestaurantForm extends Component {
             </form>
           )}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

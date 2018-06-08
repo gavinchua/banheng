@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import RestaurantForm from "../components/restaurant/Form";
+import FormWedding from "../components/restaurant/FormWedding";
+import FormTable from "../components/restaurant/FormTable";
 import BackButton from "../components/shared/BackButton";
 
 export default class RestaurantFormComponent extends Component {
@@ -11,7 +12,8 @@ export default class RestaurantFormComponent extends Component {
           <div className="row">
             <div className="col-md-12">
               <BackButton />
-              <RestaurantForm />
+              <FormTable / >
+              <FormWedding / >
             </div>
           </div>
         </div>
