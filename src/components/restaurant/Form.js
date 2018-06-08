@@ -25,7 +25,7 @@ export default class RestaurantForm extends Component {
   render() {
     const recaptchaKey = "6LdTNVgUAAAAALKYnLSdlxYnUyts0FZ9pQDyS62q";
     return (
-      <div className="container">
+      <React.Fragment>
         <Formik
           initialValues={{
             weddingCoupleName: "",
@@ -124,7 +124,7 @@ export default class RestaurantForm extends Component {
             handleBlur,
             setFieldValue
           }) => (
-            <form onSubmit={handleSubmit}>
+            <form method="post" onSubmit={handleSubmit}>
               <p>
                 This form is WIP. Its not going anywhere yet. formData is
                 generated.
@@ -505,7 +505,7 @@ export default class RestaurantForm extends Component {
             </form>
           )}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
