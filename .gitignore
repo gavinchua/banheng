@@ -46,11 +46,10 @@ Temporary Items
 .apdisk
 
 # Directories to ignore
-/build
+/deploy
 /node_modules
 
 # Files to ignore
 package-lock.json
 yarn.lock
-yarn-error.log
 .zip
