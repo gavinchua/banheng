@@ -22,7 +22,7 @@
     "react-scripts": "1.1.4",
     "react-select": "1.2.1",
     "reactstrap": "6.1.0",
-    "yup": "0.25.1"
+    "yup": "0.24.1"
   },
   "devDependencies": {},
   "scripts": {
