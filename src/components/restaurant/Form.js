@@ -124,7 +124,7 @@ export default class RestaurantForm extends Component {
             handleBlur,
             setFieldValue
           }) => (
-            <form onSubmit={handleSubmit}>
+            <form method="post" onSubmit={handleSubmit}>
               <p>
                 This form is WIP. Its not going anywhere yet. formData is
                 generated.
