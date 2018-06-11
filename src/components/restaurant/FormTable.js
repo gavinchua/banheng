@@ -7,6 +7,9 @@ import "react-select/dist/react-select.css";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import { formatDate, parseDate } from "react-day-picker/moment";
 import "react-day-picker/lib/style.css";
+import moment from 'moment';
+import TimePicker from 'rc-time-picker';
+import "rc-time-picker/assets/index.css";
 import Recaptcha from "react-recaptcha";
 
 export default class FormTable extends Component {
@@ -35,6 +38,7 @@ export default class FormTable extends Component {
             tablePurpose: "Buffet",
             tableRestaurant: "HarbourFront Centre",
             tableDate: new Date(),
+            tableTime: moment("12:00", "HH:mm"),
             tableTable: "",
             tableGuests: "",
             tableMessage: "",
@@ -50,6 +54,7 @@ export default class FormTable extends Component {
             formData.append("tablePurpose", values.tablePurpose);
             formData.append("tableRestaurant", values.tableRestaurant);
             formData.append("tableDate", values.tableDate);
+            formData.append("tableTime", values.tableTime);
             formData.append("tableTable", values.tableTable);
             formData.append("tableGuests", values.tableGuests);
             formData.append("tableMessage", values.tableMessage);
@@ -66,6 +71,7 @@ export default class FormTable extends Component {
             console.log(formData.get("tablePurpose"));
             console.log(formData.get("tableRestaurant"));
             console.log(formData.get("tableDate"));
+            console.log(formData.get("tableTime"));
             console.log(formData.get("tableTable"));
             console.log(formData.get("tableGuests"));
             console.log(formData.get("tableMessage"));
@@ -87,6 +93,7 @@ export default class FormTable extends Component {
             tablePurpose: yup.string(),
             tableRestaurant: yup.string(),
             tableDate: yup.date(),
+            tableTime: yup.date(),
             tableTable: yup
               .number()
               .typeError("No. of table/s must be a number")
@@ -255,7 +262,7 @@ export default class FormTable extends Component {
                       Buffet
                     </label>
                   </div>
-                  <div className="form-check form-check-inline">
+                   <div className="form-check form-check-inline">
                     <input
                       id="tablePurposeAlaCarte"
                       name="tablePurpose"
@@ -271,7 +278,26 @@ export default class FormTable extends Component {
                       className="form-check-label"
                       htmlFor="tablePurposeAlaCarte"
                     >
-                      Function
+                      Ala Carte
+                    </label>
+                  </div>
+                  <div className="form-check form-check-inline">
+                    <input
+                      id="tablePurposeSetMenu"
+                      name="tablePurpose"
+                      type="radio"
+                      className="form-check-input"
+                      value={values.tablePurpose}
+                      checked={values.tablePurpose === "SetMenu"}
+                      onChange={() => {
+                        setFieldValue("tablePurpose", "SetMenu");
+                      }}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="tablePurposeSetMenu"
+                    >
+                      Set Menu
                     </label>
                   </div>
                 </div>
@@ -345,6 +371,46 @@ export default class FormTable extends Component {
                 {errors.tableDate &&
                   touched.tableDate && (
                     <p className="invalid-feedback">{errors.tableDate}</p>
+                  )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="tableTime">
+                  Time
+                  <small className="required">*</small>
+                </label>
+                <TimePicker
+                  id="tableTime"
+                  name="tableTime"
+                  className={`form-control ${errors.tableTime &&
+                    touched.tableTime &&
+                    "is-invalid"}`}
+                  value={values.tableTime}
+                  //onChange={handleChange}
+                  //onBlur={handleBlur}
+                  defaultValue={moment()}
+                  showSecond={false}
+                  allowEmpty={false}
+                  // onTimeChange={handleTimeChange}
+                  // verifyCallback={response => {
+                  //   setFieldValue("recaptcha", response);
+                  // }}
+                  // onloadCallback={() => {
+                  //   console.log("done loading!");
+                  // }}
+                  // onChange={response => {
+                  //   setFieldValue("tableRestaurant", response.value);
+                  // }}
+                  onChange={response => {
+                    setFieldValue("tableTime", response);
+                    console.log("time changed!" + response);
+                  }}
+                  // timeMode="12"
+                  // theme="classic"
+                />
+                {errors.tableTime &&
+                  touched.tableTime && (
+                    <p className="invalid-feedback">{errors.tableTime}</p>
                   )}
               </div>
 
