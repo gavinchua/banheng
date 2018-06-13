@@ -13,10 +13,6 @@ import "rc-time-picker/assets/index.css";
 import Recaptcha from "react-recaptcha";
 
 export default class FormTable extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     // Adding Google API
     const script = document.createElement("script");

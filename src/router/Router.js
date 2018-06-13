@@ -6,13 +6,13 @@ import Header from "../components/shared/Header";
 import Footer from "../components/shared/Footer";
 
 // Pages
-import Home from "../pages/Home";
-import HarbourFront from "../pages/HarbourFront";
-import TheCathay from "../pages/TheCathay";
-import ArandaCountryClub from "../pages/ArandaCountryClub";
-import OrchardCentral from "../pages/OrchardCentral";
-import BoonKeng from "../pages/BoonKeng";
-import RestaurantFormComponent from "../pages/Form";
+import Home from "../pages/home";
+import HarbourFront from "../pages/harbourFront";
+import TheCathay from "../pages/theCathay";
+import ArandaCountryClub from "../pages/arandaCountryClub";
+import OrchardCentral from "../pages/orchardCentral";
+import BoonKeng from "../pages/boonKeng";
+import RestaurantFormComponent from "../pages/form";
 
 export default class ReactRouter extends React.Component {
   render() {

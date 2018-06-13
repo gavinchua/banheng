@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 export default class PackageBirthday extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     var birthdayPackageList = this.props.birthdaypackagesdata.map(
       (birthdaypackages, index) => (

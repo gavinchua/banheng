@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 export default class PackageIndividual extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     var individualPackageList = this.props.individualpackagesdata.map(
       (individualpackages, index) => (

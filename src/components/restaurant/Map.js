@@ -9,10 +9,6 @@ import {
 import { compose, withStateHandlers } from "recompose";
 
 export default class Map extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const MapWithAMakredInfoWindow = compose(
       withStateHandlers(

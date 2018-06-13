@@ -6,7 +6,7 @@ const pagename = "home";
 export default class Home extends Component {
   render() {
     return (
-      <main className="{pagename}" role="main">
+      <main className={pagename} role="main">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

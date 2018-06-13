@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 export default class PackageWedding extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     var weddingPackageList = this.props.weddingpackagesdata.map(
       (weddingpackages, index) => (

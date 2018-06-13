@@ -47,8 +47,11 @@ Temporary Items
 
 # Directories to ignore
 /node_modules
+/build
+/src/css/*.css
 
 # Files to ignore
 package-lock.json
 yarn.lock
 .zip
+*.log

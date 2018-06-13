@@ -10,10 +10,6 @@ import "react-day-picker/lib/style.css";
 import Recaptcha from "react-recaptcha";
 
 export default class FormWedding extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     // Adding Google API
     const script = document.createElement("script");

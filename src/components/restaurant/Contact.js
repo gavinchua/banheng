@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import RestaurantMap from "./Map";
 
 export default class RestaurantContact extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

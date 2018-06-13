@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
 // Data
-import WeddingPackageData from "../data/WeddingPackages.json";
-import MonthlyPackageData from "../data/MonthlyPackages.json";
-import BirthdayPackageData from "../data/BirthdayPackages.json";
-import IndividualPackageData from "../data/IndividualPackages.json";
-import RestaurantsArrayData from "../data/RestaurantsArray.json";
+import WeddingPackageData from "../data/weddingPackages.json";
+import MonthlyPackageData from "../data/monthlyPackages.json";
+import BirthdayPackageData from "../data/birthdayPackages.json";
+import IndividualPackageData from "../data/individualPackages.json";
+import RestaurantsArrayData from "../data/restaurantsArray.json";
 
 // Components
 import RestaurantCarousel from "../components/restaurant/Carousel";
@@ -44,7 +44,7 @@ export default class BoonKeng extends Component {
     );
 
     return (
-      <main className="{pagename}" role="main">
+      <main className={pagename} role="main">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 export default class PackageMonthly extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     var monthlyPackageList = this.props.monthlypackagesdata.map(
       (monthlypackages, index) => (
