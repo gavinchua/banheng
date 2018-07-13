@@ -3,15 +3,28 @@ import RestaurantMap from "./Map";
 
 export default class RestaurantContact extends Component {
   render() {
+    const {
+      restaurant,
+      address,
+      postalcode,
+      contact,
+      mailto,
+      email,
+      directions,
+      lat,
+      lng,
+      zoom
+    } = this.props;
+
     return (
       <div>
-        <div>{this.props.restaurant}</div>
+        <div>{restaurant}</div>
         <address>
           <h4 className="margin-top-10">Address</h4>
           <p className="prewrap">
-            {this.props.address}
+            {address}
             <br />
-            Singapore {this.props.postalcode}
+            Singapore {postalcode}
           </p>
           <h4 className="margin-top-10">Business Hours</h4>
           <p className="prewrap">{this.props.businesshours}</p>
@@ -19,19 +32,19 @@ export default class RestaurantContact extends Component {
           <p className="prewrap">
             Wedding Package:
             <br />
-            {this.props.contact}
+            {contact}
             <br />
-            <a href={this.props.mailto}>{this.props.email}</a>
+            <a href={mailto}>{email}</a>
           </p>
           <h4 className="margin-top-10">Directions</h4>
-          <p className="prewrap">{this.props.directions}</p>
+          <p className="prewrap">{directions}</p>
           <RestaurantMap
-            lat={this.props.lat}
-            lng={this.props.lng}
-            zoom={this.props.zoom}
-            address={this.props.address}
-            postalcode={this.props.postalcode}
-            restaurant={this.props.restaurant}
+            lat={lat}
+            lng={lng}
+            zoom={zoom}
+            address={address}
+            postalcode={postalcode}
+            restaurant={restaurant}
           />
         </address>
       </div>

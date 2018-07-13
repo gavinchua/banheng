@@ -10,6 +10,15 @@ import { compose, withStateHandlers } from "recompose";
 
 export default class Map extends Component {
   render() {
+    const {
+      zoom,
+      lat,
+      lng,
+      restaurant,
+      address,
+      postalcode
+    } = this.props;
+
     const MapWithAMakredInfoWindow = compose(
       withStateHandlers(
         () => ({
@@ -25,21 +34,21 @@ export default class Map extends Component {
       withGoogleMap
     )(props => (
       <GoogleMap
-        defaultZoom={this.props.zoom}
-        defaultCenter={{ lat: this.props.lat, lng: this.props.lng }}
+        defaultZoom={zoom}
+        defaultCenter={{ lat, lng }}
       >
         <Marker
-          position={{ lat: this.props.lat, lng: this.props.lng }}
+          position={{ lat, lng }}
           onClick={props.onToggleOpen}
         >
           {props.isOpen && (
             <InfoWindow onCloseClick={props.onToggleOpen}>
               <div>
-                <h6>{this.props.restaurant}</h6>
+                <h6>{restaurant}</h6>
                 <p className="prewrap">
-                  {this.props.address}
+                  {address}
                   <br />
-                  Singapore {this.props.postalcode}
+                  Singapore {postalcode}
                 </p>
               </div>
             </InfoWindow>

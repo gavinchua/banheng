@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class PackageWedding extends Component {
   render() {
-    var weddingPackageList = this.props.weddingpackagesdata.map(
+    const weddingPackageList = this.props.weddingpackagesdata.map(
       (weddingpackages, index) => (
         <li key={weddingpackages.id}>
           <p className="bullet-menu-selection bold">{weddingpackages.name}</p>

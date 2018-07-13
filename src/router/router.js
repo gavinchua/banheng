@@ -13,6 +13,7 @@ import ArandaCountryClub from "../pages/arandaCountryClub";
 import OrchardCentral from "../pages/orchardCentral";
 import BoonKeng from "../pages/boonKeng";
 import RestaurantFormComponent from "../pages/form";
+import NasaComponent from "../pages/nasa";
 
 export default class ReactRouter extends React.Component {
   render() {
@@ -26,6 +27,7 @@ export default class ReactRouter extends React.Component {
         <Route path="/OrchardCentral" component={OrchardCentral} />
         <Route path="/BoonKeng" component={BoonKeng} />
         <Route path="/Form" component={RestaurantFormComponent} />
+        <Route path="/Nasa" component={NasaComponent} />
         <Footer />
       </React.Fragment>
     );

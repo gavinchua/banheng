@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class PackageIndividual extends Component {
   render() {
-    var individualPackageList = this.props.individualpackagesdata.map(
+    const individualPackageList = this.props.individualpackagesdata.map(
       (individualpackages, index) => (
         <li key={individualpackages.id}>
           <a
