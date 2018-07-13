@@ -23,10 +23,18 @@ export default class ArandaCountryClub extends Component {
     const RestaurantArrayData = RestaurantsArrayData.filter(
       e => e.pagename === pagename
     );
+    const {
+      name,
+      address,
+      postalcode,
+      businesshours,
+      contact,
+      email,
+      directions
+    } = RestaurantArrayData[0];
 
     const myslides = RestaurantArrayData.map(restaurant => restaurant.myslides);
 
-    const email = RestaurantArrayData.map(restaurant => restaurant.email);
     const mailto = `mailto:${email}`;
     const lat = Number(
       RestaurantArrayData.map(restaurant => restaurant.latlng.lat)
@@ -46,31 +54,17 @@ export default class ArandaCountryClub extends Component {
               <RestaurantCarousel myslides={myslides[0]} />
               <PackageMonthly monthlypackagesdata={MonthlyPackageData} />
               <PackageBirthday birthdaypackagesdata={BirthdayPackageData} />
-              <PackageIndividual
-                individualpackagesdata={IndividualPackageData}
-              />
+              <PackageIndividual individualpackagesdata={IndividualPackageData} />
               <PackageWedding weddingpackagesdata={WeddingPackageData} />
               <RestaurantContact
-                restaurant={RestaurantArrayData.map(
-                  restaurant => restaurant.name
-                )}
-                address={RestaurantArrayData.map(
-                  restaurant => restaurant.address
-                )}
-                postalcode={RestaurantArrayData.map(
-                  restaurant => restaurant.postalcode
-                )}
-                businesshours={RestaurantArrayData.map(
-                  restaurant => restaurant.businesshours
-                )}
-                contact={RestaurantArrayData.map(
-                  restaurant => restaurant.contact
-                )}
+                restaurant={name}
+                address={address}
+                postalcode={postalcode}
+                businesshours={businesshours}
+                contact={contact}
                 email={email}
                 mailto={mailto}
-                directions={RestaurantArrayData.map(
-                  restaurant => restaurant.directions
-                )}
+                directions={directions}
                 lat={lat}
                 lng={lng}
                 zoom={zoom}
